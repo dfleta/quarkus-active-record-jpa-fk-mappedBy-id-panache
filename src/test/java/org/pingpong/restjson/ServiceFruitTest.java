@@ -9,7 +9,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.internal.common.assertion.Assertion;
 
 /**
  * Component Unit testing

@@ -2,7 +2,6 @@ package org.pingpong.restjson;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -34,10 +33,4 @@ public class Farmer extends PanacheEntity {
         this.name = name;
         this.location = location;
     }
-    /*
-    public Farmer(Long id, String name, String location) {
-        this.id = id;
-        this.name = name;
-        this.location = location;
-    }*/
 }
