@@ -25,7 +25,7 @@ public class Farmer extends PanacheEntity {
     public String location;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "farmer")
     public Set<Fruit> fruits;
     
     public Farmer() {}
@@ -34,4 +34,10 @@ public class Farmer extends PanacheEntity {
         this.name = name;
         this.location = location;
     }
+    /*
+    public Farmer(Long id, String name, String location) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+    }*/
 }

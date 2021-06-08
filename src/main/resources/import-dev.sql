@@ -16,8 +16,8 @@ CREATE TABLE fruit
     PRIMARY KEY (id),
     CONSTRAINT `fk_fruit_farmer`
         FOREIGN KEY (farmer_id) REFERENCES farmer (id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+        ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 INSERT INTO 
     farmer (id, name, location) 

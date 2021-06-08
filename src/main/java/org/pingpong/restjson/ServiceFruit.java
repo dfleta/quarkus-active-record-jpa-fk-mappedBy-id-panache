@@ -24,12 +24,26 @@ public class ServiceFruit {
     }
 
     public void add(Fruit fruit) {
+        // Es necesario meter en el Persistence Context el objeto Farmer de Fruit
+        // antes de hacer flush sobre la bbdd
+        // Buscamos el objeto Farmer de la peticion POST en la bbdd para ponerlo MANAGED con find()
+        Optional<Farmer> supplier = Farmer.find("name", fruit.farmer.name).firstResultOptional();
+        if (supplier.isPresent()) { 
+            // Si el Farmer existe se asigna a Fruit
+            fruit.farmer = supplier.get();
+        } else {
+            // Si no existe, se ha creado un NEW Farmer en memoria
+            // y lo ponemos en MANAGED con persist()
+            fruit.farmer.persist();
+        }
         fruit.persist();
     }
 
     public void remove(String name) {
-        Fruit fruit = Fruit.find("name", name).firstResult();
-        fruit.delete();
+        Optional<Fruit> fruit = Fruit.find("name", name).firstResultOptional();
+        if (fruit.isPresent()) {
+            fruit.get().delete();
+        }
     }
 
     public Optional<Fruit> getFruit(String name) {
